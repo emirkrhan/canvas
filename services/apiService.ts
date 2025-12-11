@@ -1,10 +1,10 @@
 import { ExtractedData } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://graphic-abstract-api.vercel.app';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://graphic-abstract-api.vercel.app/api';
 
 export const extractArticleData = async (url: string): Promise<ExtractedData> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/extract`, {
+    const response = await fetch(`${API_BASE_URL}/extract`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export const polishText = async (
   instruction: string
 ): Promise<string> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/polish`, {
+    const response = await fetch(`${API_BASE_URL}/polish`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export const sendChatMessage = async (
   message: string
 ): Promise<string> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/chat`, {
+    const response = await fetch(`${API_BASE_URL}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export const extractArticleFromPdf = async (pdfFile: File): Promise<ExtractedDat
     const formData = new FormData();
     formData.append('pdf', pdfFile);
 
-    const response = await fetch(`${API_BASE_URL}/api/pdf/extract`, {
+    const response = await fetch(`${API_BASE_URL}/pdf/extract`, {
       method: 'POST',
       body: formData,
     });
